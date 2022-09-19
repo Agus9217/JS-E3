@@ -6,20 +6,25 @@ const printImg = document.getElementById('img-pizza')
 const getPizzasArray = Storage.getItem('Pizzas')
 const arrayPizzas = JSON.parse(getPizzasArray)
 
+
+Storage.setItem('Pizzas', JSON.stringify(pizzas))
+
 const init = () => {
   window.addEventListener('DOMContentLoaded', () => {
+    const getPizzasArray = Storage.getItem('Pizzas')
+    const arrayPizzas = JSON.parse(getPizzasArray)
     printParap.innerHTML = `Selecciona un numero 1 al ${ arrayPizzas.length + 1 }`
-    Storage.setItem('Pizzas', JSON.stringify(pizzas))
     pizzaSelect.addEventListener('change', (e) => {
       const pizzaValue = e.target.valueAsNumber
-      pizzaSearch(pizzaValue)
+      findArray(arrayPizzas, pizzaValue)
     })
   })
-  
 }
 
-const pizzaSearch = (value) => {
-  const getPizzas = arrayPizzas.find(item => item.id === value)
+init()
+
+const findArray = (arr, value) => {
+  const getPizzas = arr.find(item => item.id === value)
   if (!getPizzas) {
     return alert(`Error prueba otra vez con un numero del 1 al ${ arrayPizzas.length + 1 }` )
   } else {
@@ -28,5 +33,3 @@ const pizzaSearch = (value) => {
     console.log(getPizzas)
   }
 }
-
-init()

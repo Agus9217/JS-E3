@@ -26,3 +26,23 @@ body {
   font-size: 4vw;
 }
 
+.input-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.input-group > button, .input-group > input {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+#card-parap {
+  padding-bottom: 25px;
+  font-size: 2vw;
+}
+
+#img-pizza {
+  width: 100%;
+}
